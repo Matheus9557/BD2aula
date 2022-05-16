@@ -1,6 +1,8 @@
 const Pessoa = require('./models/pessoa');
 
-async function sincronizar(){
-  Pessoa.sync();
-}
-sincronizar();
+(async () => {
+  const pessoa = Pessoa.build({nome:"Matheus Gomes"});
+  await pessoa.save().then('Salvo com sucesso').catch(error =>{
+    console.log(error);
+  });
+})();
